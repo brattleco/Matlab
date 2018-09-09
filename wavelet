@@ -1,0 +1,22 @@
+clc
+clear all
+
+load m;
+x = m;
+n = length(x);
+
+thr = sqrt(2*log(n*log(n)/log(2)));
+xwpd = wpdencmp(x,'s',4,'sym4','sure',thr,1);
+xwd = wden(x,'rigrsure','s','one',4,'sym4');
+
+subplot(311)
+plot(x);
+title('orginal');
+
+subplot(312)
+plot(xwpd);
+title('wavelet packet');
+
+subplot(313)
+plot(xwd);
+title('denoised wavelet');
